@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alteris — Hero Mockup</title>
+  <!-- Poppins: nav, body, services text (matches live site inspector) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+  <!-- Sofia Pro Light is commercial (Adobe Fonts / live site). Fallback: Playfair Display for mockup fidelity -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --burgundy: #7a1f3d;
+      --gold: #c9a96e;
+      --gold-light: #dfc08a;
+      --dark: #120810;
+      --white: #ffffff;
+    }
+
+    /* Font system:
+       Headlines/display → Sofia Pro Light (commercial, Adobe Fonts on live site)
+                           fallback: Playfair Display for mockup
+       Body/nav/UI       → Poppins 500 (matches live site inspector) */
+    :root {
+      --font-display: "Sofia Pro Light", 'Playfair Display', Georgia, serif;
+      --font-body: 'Poppins', Helvetica, Arial, Lucida, sans-serif;
+    }
+    body { font-family: var(--font-body); background: #000; overflow-x: hidden; }
+
+    /* ──────────────────────────────────────
+       HERO
+    ────────────────────────────────────── */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 700px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Background: geometric metallic panels (brand identity) ── */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: #100810;
+    }
+
+    /* Main metallic panel cluster — right side, like current site */
+    .panel {
+      position: absolute;
+      transform-origin: center;
+    }
+
+    /* Deep background gradient */
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 90% at 75% 40%, #3d1e0a 0%, transparent 55%),
+        radial-gradient(ellipse 50% 60% at 85% 10%, #5a2a08 0%, transparent 40%),
+        radial-gradient(ellipse 40% 50% at 60% 80%, #2d1520 0%, transparent 50%);
+    }
+
+    /* SVG geometric panels rendered via CSS clip-path */
+    .panels-wrap {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    /* Panel 1 — large bronze, top-right */
+    .p1 {
+      position: absolute;
+      top: -5%;
+      right: -2%;
+      width: 58%;
+      height: 65%;
+      background: linear-gradient(160deg, #8b5520 0%, #c8904a 20%, #a0703a 40%, #6a3e18 60%, #9a6030 80%, #c8a060 100%);
+      clip-path: polygon(15% 0%, 100% 0%, 100% 85%, 40% 100%, 0% 60%);
+      opacity: 0.85;
+    }
+
+    /* Panel 2 — darker overlay on p1 */
+    .p2 {
+      position: absolute;
+      top: -5%;
+      right: 5%;
+      width: 48%;
+      height: 55%;
+      background: linear-gradient(140deg, #4a2808 0%, #7a4820 30%, #5a3010 60%, #3a1808 100%);
+      clip-path: polygon(20% 0%, 100% 0%, 100% 70%, 50% 100%, 5% 50%);
+      opacity: 0.7;
+      mix-blend-mode: multiply;
+    }
+
+    /* Panel 3 — gold accent, upper right corner */
+    .p3 {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 35%;
+      height: 40%;
+      background: linear-gradient(180deg, #d4a060 0%, #b87830 30%, #e0c080 60%, #c8a050 100%);
+      clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 40%);
+      opacity: 0.45;
+    }
+
+    /* Panel 4 — dark lower panel */
+    .p4 {
+      position: absolute;
+      bottom: -5%;
+      right: -2%;
+      width: 52%;
+      height: 55%;
+      background: linear-gradient(30deg, #1a0808 0%, #3a1810 40%, #2a1008 70%, #150808 100%);
+      clip-path: polygon(20% 0%, 100% 20%, 100% 100%, 0% 100%);
+      opacity: 0.9;
+    }
+
+    /* Panel 5 — bright gold slim diagonal */
+    .p5 {
+      position: absolute;
+      top: 28%;
+      right: 20%;
+      width: 30%;
+      height: 35%;
+      background: linear-gradient(120deg, #c8904a 0%, #e0b060 50%, #a07030 100%);
+      clip-path: polygon(0% 30%, 100% 0%, 100% 70%, 0% 100%);
+      opacity: 0.35;
+    }
+
+    /* Starfield / sparkle dots */
+    .sparkles {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,0.6) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,0.4) 1px, transparent 1px),
+        radial-gradient(circle, rgba(201,169,110,0.5) 1px, transparent 1px);
+      background-size: 120px 120px, 80px 80px, 150px 150px;
+      background-position: 30px 30px, 60px 50px, 10px 80px;
+      opacity: 0.4;
+    }
+
+    /* Dark vignette over left half so text reads clearly */
+    .hero-vignette {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, rgba(10,5,15,0.92) 0%, rgba(10,5,15,0.75) 40%, rgba(10,5,15,0.15) 65%, transparent 100%),
+        linear-gradient(to bottom, rgba(10,5,15,0.5) 0%, transparent 20%, transparent 75%, rgba(10,5,15,0.6) 100%);
+    }
+
+    /* ── NAV ── */
+    .nav {
+      position: relative;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 52px;
+      height: 76px;
+      flex-shrink: 0;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+
+    /* Horizontal lockup matching their current logo */
+    .nav-logo .wordmark-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-logo .alteris {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: 6px;
+      color: var(--gold);
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .nav-logo .divider {
+      width: 1px;
+      height: 28px;
+      background: rgba(201,169,110,0.3);
+    }
+    .nav-logo .fin-group {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+    .nav-logo .fin-group span {
+      font-family: var(--font-body);
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: rgba(201,169,110,0.65);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      transition: color .2s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* Alphinity-style: two distinct action buttons top-right */
+    .nav-actions {
+      display: flex;
+      gap: 0;
+      flex-shrink: 0;
+    }
+    .nav-btn {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 12px 22px;
+      transition: all .2s;
+      white-space: nowrap;
+    }
+    .nav-btn-book {
+      background: var(--gold);
+      color: var(--dark);
+    }
+    .nav-btn-book:hover { background: var(--gold-light); }
+    .nav-btn-contact {
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.8);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .nav-btn-contact:hover { background: rgba(255,255,255,0.14); color: var(--white); }
+
+    /* ── HERO BODY ── */
+    .hero-body {
+      position: relative;
+      z-index: 10;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: 0 52px 80px;
+    }
+
+    .hero-left {
+      max-width: 560px;
+    }
+
+    /* Eyebrow — matching Alphinity "WELCOME TO ALPHINITY" style */
+    .hero-eyebrow {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.75;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.5;
+      flex-shrink: 0;
+    }
+
+    /* Main headline — Alteris current text, elevated Cormorant at Alphinity scale */
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(52px, 7vw, 88px);
+      font-weight: 300;
+      line-height: 1.02;
+      color: var(--white);
+      margin-bottom: 10px;
+      letter-spacing: -0.5px;
+    }
+    .hero-headline .for-life {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--gold);
+      display: block;
+    }
+
+    /* Divider line under headline — Alphinity detail */
+    .hero-divider {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(to right, var(--gold), transparent);
+      margin: 24px 0;
+    }
+
+    /* Services sub — exact current text */
+    .hero-services {
+      font-size: 11.5px;
+      font-weight: 300;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 48px;
+    }
+    .hero-services span { color: rgba(201,169,110,0.5); }
+
+    /* CTAs — Alphinity has two buttons */
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .btn-book {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--burgundy);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 32px;
+      border: 1px solid var(--burgundy);
+      transition: all .25s;
+    }
+    .btn-book:hover { background: #5c1530; border-color: #5c1530; }
+    .btn-book svg {
+      width: 13px; height: 13px;
+      fill: none; stroke: currentColor; stroke-width: 2;
+      flex-shrink: 0;
+    }
+    .btn-services {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: transparent;
+      color: rgba(255,255,255,0.75);
+      font-family: var(--font-body);
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 15px 28px;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: all .25s;
+    }
+    .btn-services:hover { border-color: rgba(201,169,110,0.5); color: var(--gold); }
+
+    /* ── BOTTOM STRIP ── Alphinity has bottom tagline right-aligned */
+    .hero-bottom {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+      display: flex;
+      align-items: stretch;
+    }
+
+    /* Scroll indicator left */
+    .scroll-indicator {
+      padding: 20px 52px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex: 1;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 44px;
+      background: linear-gradient(to bottom, rgba(201,169,110,0.5), transparent);
+      animation: scrollAnim 2s ease-in-out infinite;
+    }
+    @keyframes scrollAnim {
+      0%   { transform: scaleY(0); transform-origin: top; opacity: 0; }
+      40%  { opacity: 1; }
+      60%  { transform: scaleY(1); transform-origin: top; }
+      61%  { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+    }
+    .scroll-label {
+      font-size: 8.5px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+    }
+
+    /* Tagline right — "Aspire. Sustain. Prosper." equivalent = their services tagline */
+    .hero-tagline-bar {
+      background: var(--burgundy);
+      padding: 18px 52px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tagline-text {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 0.5px;
+      white-space: nowrap;
+    }
+    .tagline-text em {
+      color: var(--gold-light);
+      font-style: italic;
+    }
+
+    /* Chevron down circle (matching current Alteris site) */
+    .chevron-wrap {
+      position: absolute;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 30;
+    }
+    .chevron-circle {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(201,169,110,0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all .2s;
+      animation: bounce 2.5s ease-in-out infinite;
+    }
+    .chevron-circle:hover { border-color: var(--gold); background: rgba(201,169,110,0.1); }
+    .chevron-circle svg {
+      width: 14px; height: 14px;
+      fill: none; stroke: var(--gold); stroke-width: 1.5;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(5px); }
+    }
+
+    /* ── Google rating badge floating ── */
+    .rating-badge {
+      position: absolute;
+      right: 52px;
+      bottom: 76px;
+      z-index: 20;
+      background: rgba(15, 8, 18, 0.7);
+      border: 1px solid rgba(201,169,110,0.25);
+      backdrop-filter: blur(12px);
+      padding: 16px 22px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .g-mark {
+      font-size: 20px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #4285F4 20%, #EA4335 45%, #FBBC05 70%, #34A853 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+    .g-stars { color: #f5c518; font-size: 13px; letter-spacing: 1px; line-height: 1; margin-bottom: 2px; }
+    .g-label {
+      font-size: 9.5px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.5px;
+      line-height: 1;
+    }
+    .g-num {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .nav { padding: 0 32px; }
+      .nav-links { display: none; }
+      .hero-body { padding: 0 32px 80px; }
+      .scroll-indicator { padding: 20px 32px; }
+      .hero-tagline-bar { padding: 18px 32px; }
+      .rating-badge { right: 32px; }
+    }
+    @media (max-width: 640px) {
+      .nav { padding: 0 20px; height: 64px; }
+      .nav-btn-contact { display: none; }
+      .hero-body { padding: 0 24px 100px; }
+      .hero-headline { font-size: 48px; }
+      .hero-ctas { flex-direction: column; }
+      .btn-book, .btn-services { width: 100%; justify-content: center; }
+      .rating-badge { display: none; }
+      .hero-tagline-bar { display: none; }
+      .scroll-indicator { padding: 16px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<section class="hero">
+
+  <!-- ── Background panels ── -->
+  <div class="hero-bg">
+    <div class="panels-wrap">
+      <div class="p1"></div>
+      <div class="p2"></div>
+      <div class="p3"></div>
+      <div class="p4"></div>
+      <div class="p5"></div>
+    </div>
+    <div class="sparkles"></div>
+    <div class="hero-vignette"></div>
+  </div>
+
+  <!-- ── NAV ── -->
+  <nav class="nav">
+    <a class="nav-logo" href="#">
+      <div class="wordmark-wrap">
+        <span class="alteris">ALTERIS</span>
+        <div class="divider"></div>
+        <div class="fin-group">
+          <span>FINANCIAL</span>
+          <span>GROUP</span>
+        </div>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#">About</a></li>
+      <li><a href="#">Our Team</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Insights</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Alteris Women</a></li>
+    </ul>
+
+    <!-- Alphinity-style dual CTA buttons -->
+    <div class="nav-actions">
+      <a class="nav-btn nav-btn-book" href="#">Book Appointment</a>
+      <a class="nav-btn nav-btn-contact" href="#">Contact Us</a>
+    </div>
+  </nav>
+
+  <!-- ── HERO BODY ── -->
+  <div class="hero-body">
+    <div class="hero-left">
+
+      <!-- Eyebrow — Alphinity-style -->
+      <p class="hero-eyebrow">Alteris Financial Group</p>
+
+      <!-- Headline — exact current site text, elevated -->
+      <h1 class="hero-headline">
+        Prosperity,
+        <span class="for-life">for life.</span>
+      </h1>
+
+      <div class="hero-divider"></div>
+
+      <!-- Services — exact current text -->
+      <p class="hero-services">
+        Wealth <span>/</span> Accounting <span>/</span> Lifestyle <span>/</span> Care
+      </p>
+
+      <!-- CTAs -->
+      <div class="hero-ctas">
+        <a class="btn-book" href="#">
+          Book an Appointment
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a class="btn-services" href="#">
+          Our Services
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Scroll + chevron ── -->
+  <div class="scroll-indicator" style="position:absolute;bottom:0;left:0;z-index:20;">
+    <div class="scroll-line"></div>
+    <span class="scroll-label">Scroll</span>
+  </div>
+
+  <!-- Down chevron (matching current site) -->
+  <div class="chevron-wrap">
+    <div class="chevron-circle">
+      <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </div>
+
+  <!-- Google rating badge (bottom right, floating) -->
+  <div class="rating-badge">
+    <span class="g-mark">G</span>
+    <div>
+      <div class="g-stars">★★★★★</div>
+      <div class="g-label">156 Google Reviews</div>
+    </div>
+    <div class="g-num">5.0</div>
+  </div>
+
+  <!-- Alphinity-style bottom tagline bar -->
+  <div class="hero-tagline-bar" style="position:absolute;bottom:0;right:0;z-index:20;">
+    <p class="tagline-text">Wealth · Accounting · Lifestyle · <em>Care</em></p>
+  </div>
+
+</section>
+
+</body>
+</html>
