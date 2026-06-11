@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alteris Financial Group — Prosperity, for life.</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --font-display: 'Playfair Display', Georgia, serif;
+      --font-display: 'Recoleta', Georgia, serif;
       --font-body: 'Poppins', Helvetica, Arial, Lucida, sans-serif;
       --burgundy: #7a1f3d;
       --dark-burgundy: #5c1530;
@@ -37,7 +37,7 @@
     img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
     /* ── HEADING WEIGHT OVERRIDE ── */
-    h1, h2, h3, h4 { font-weight: 600; }
+    h1, h2, h3, h4 { font-weight: 500; }
 
     /* ── UTILITY ── */
     .serif { font-family: var(--font-display); }
@@ -649,6 +649,21 @@
       overflow: hidden;
       position: relative;
     }
+    /* Bar base styles */
+    .feature-img-wrap:first-child::before,
+    .feature-img-wrap:last-child::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      width: 24px;
+      z-index: 2;
+    }
+    .feature-img-wrap:first-child::before { left: 0; right: auto; }
+    .feature-img-wrap:last-child::before  { right: 0; left: auto; }
+
+    .feature-row.fr-charcoal .feature-img-wrap::before { background: #2c3440; }
+    .feature-row.fr-burgundy .feature-img-wrap::before { background: var(--burgundy); }
+    .feature-row.fr-gold     .feature-img-wrap::before { background: var(--gold); }
     .feature-img-inner {
       width: 100%;
       height: 100%;
@@ -690,6 +705,9 @@
       margin-bottom: 20px;
     }
     .fc-dark .feature-heading { color: var(--white); }
+    .fr-charcoal .feature-heading { color: #2c3440; }
+    .fr-burgundy .feature-heading { color: var(--burgundy); }
+    .fr-gold     .feature-heading { color: #a07c3e; }
     .feature-body {
       font-size: 16px;
       font-weight: 400;
@@ -1185,6 +1203,7 @@
       .feature-content { padding: 48px 24px; }
     }
   </style>
+<link href="https://api.fontshare.com/v2/css?f[]=recoleta@400,500,700&display=swap" rel="stylesheet" />
 </head>
 <body>
 
@@ -1251,55 +1270,8 @@
   <div class="statement-services">Wealth &nbsp;·&nbsp; Accounting &nbsp;·&nbsp; Lifestyle &nbsp;·&nbsp; Care</div>
 </section>
 
-<!-- ═══════════════ SERVICES ═══════════════ -->
-<section class="services-section" id="services">
-  <div class="section-header">
-    <div>
-      <span class="eyebrow">What We Do</span>
-      <h2 class="section-title">One family. Every chapter.</h2>
-    </div>
-    <a class="btn-primary" href="#">All Services
-      <svg viewBox="0 0 24 24" style="width:13px;height:13px;fill:none;stroke:currentColor;stroke-width:2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-    </a>
-  </div>
-  <div class="services-grid">
-    <div class="service-card">
-      <div class="service-card-bg sc-wealth"></div>
-      <div class="service-card-overlay">
-        <h3 class="service-card-title">Wealth Management</h3>
-        <p class="service-card-desc">Investment advice, superannuation, insurance and retirement planning designed to grow and protect your assets.</p>
-        <div class="service-card-arrow">→</div>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-card-bg sc-accounting"></div>
-      <div class="service-card-overlay">
-        <h3 class="service-card-title">Accounting &amp; Tax</h3>
-        <p class="service-card-desc">Expert tax structuring, business accounting and compliance to unlock real value from your financial position.</p>
-        <div class="service-card-arrow">→</div>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-card-bg sc-lifestyle"></div>
-      <div class="service-card-overlay">
-        <h3 class="service-card-title">Lifestyle Planning</h3>
-        <p class="service-card-desc">Cashflow, budgeting and life-stage planning that gives you the freedom to live the way you want.</p>
-        <div class="service-card-arrow">→</div>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-card-bg sc-care"></div>
-      <div class="service-card-overlay">
-        <h3 class="service-card-title">Aged Care</h3>
-        <p class="service-card-desc">Specialist aged care financial advice to help families navigate this important transition with confidence.</p>
-        <div class="service-card-arrow">→</div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ═══════════════ FEATURE ROWS ═══════════════ -->
-<section class="feature-row">
+<section class="feature-row fr-charcoal">
   <div class="feature-img-wrap">
     <div class="feature-img-inner fi-couple"></div>
   </div>
@@ -1310,7 +1282,7 @@
   </div>
 </section>
 
-<section class="feature-row">
+<section class="feature-row fr-burgundy">
   <div class="feature-content fc-white">
     <span class="feature-label">Your Legacy</span>
     <h3 class="feature-heading">Grow your wealth.<br>Preserve your legacy.</h3>
@@ -1321,7 +1293,7 @@
   </div>
 </section>
 
-<section class="feature-row">
+<section class="feature-row fr-gold">
   <div class="feature-img-wrap">
     <div class="feature-img-inner fi-children"></div>
   </div>
@@ -1332,10 +1304,10 @@
   </div>
 </section>
 
-<section class="feature-row">
+<section class="feature-row fr-charcoal">
   <div class="feature-content fc-white" style="background:#ede8de;border-left:4px solid var(--burgundy);padding-left:68px">
     <span class="feature-label" style="color:var(--burgundy)">Aged Care</span>
-    <h3 class="feature-heading" style="color:var(--burgundy);">Supporting the generation that came before you.</h3>
+    <h3 class="feature-heading">Supporting the generation that came before you.</h3>
     <p class="feature-body">When a parent needs care, the decisions are hard. Our aged care specialists stand beside you, protecting their dignity and preserving their assets. Find out more about <a class="feature-link" href="https://alteris.com.au/aged-care-financial-advice/" target="_blank">aged care financial advice</a>.</p>
   </div>
   <div class="feature-img-wrap">
