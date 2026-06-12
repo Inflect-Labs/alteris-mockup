@@ -460,6 +460,10 @@
       background: var(--burgundy);
       padding: 72px 80px 48px;
     }
+    .statement-inner {
+      border-left: 3px solid var(--gold);
+      padding-left: 32px;
+    }
     .statement-heading {
       font-family: var(--font-display);
       font-size: clamp(26px, 3.2vw, 48px);
@@ -1233,6 +1237,7 @@
 <!-- ═══════════════ NAV ═══════════════ -->
 <nav class="nav">
   <a class="nav-logo" href="#">
+    <img src="images/alteris-logo.svg?v=3" alt="Alteris" />
     <span class="nav-logo-text">FINANCIAL<br>GROUP</span>
   </a>
   <ul class="nav-center">
@@ -1286,8 +1291,10 @@
 
 <!-- ═══════════════ STATEMENT STRIP ═══════════════ -->
 <section class="statement-strip">
-  <h2 class="statement-heading">Clarity and confidence<br>for individuals and families.<br><span style="color:var(--gold)">Plan for the next generation.</span></h2>
-  <div class="statement-services">Wealth &nbsp;·&nbsp; Accounting &nbsp;·&nbsp; Lifestyle &nbsp;·&nbsp; Care</div>
+  <div class="statement-inner">
+    <h2 class="statement-heading">Clarity and confidence<br>for individuals and families.<br><span style="color:var(--gold)">Plan for the next generation.</span></h2>
+    <div class="statement-services">Wealth &nbsp;·&nbsp; Accounting &nbsp;·&nbsp; Lifestyle &nbsp;·&nbsp; Care</div>
+  </div>
 </section>
 
 <!-- ═══════════════ FEATURE ROWS ═══════════════ -->
