@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alteris Financial Group — Brand & Design System</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Sofia Pro (subtitles + body text) is a licensed Adobe Fonts family — load via your Adobe Fonts web kit in production. A geometric-sans fallback is declared below. -->
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* ── BRAND TOKENS (extracted from alteris.com.au + brand logo) ── */
+      --font-display: 'DM Serif Display', Georgia, serif;            /* titles */
+      --font-subtitle: 'Sofia Pro', 'Sofia', 'Poppins', sans-serif; /* subtitles — Medium */
+      --font-text: 'Sofia Pro', 'Sofia', 'Poppins', sans-serif;     /* body text — Light */
+      --font-ui: 'Poppins', Helvetica, Arial, sans-serif;           /* header & footer */
+      --font-body: var(--font-text);
+
+      --burgundy: #7a1f3d;
+      --dark-burgundy: #5c1530;
+      --gold: #c9a96e;
+      --gold-light: #dfc08a;
+      --gold-logo-1: #c8b06e;   /* logo gradient start */
+      --gold-logo-2: #997847;   /* logo gradient end */
+      --dark: #141014;
+      --charcoal: #2c2c2c;
+      --cream: #f5f0e8;
+      --warm-white: #faf8f4;
+      --white: #ffffff;
+      --text: #2c2c2c;
+      --muted: #6b6b6b;
+      --border: rgba(0,0,0,0.08);
+
+      /* ── DOC CHROME ── */
+      --doc-bg: #f4f1ec;
+      --panel: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--doc-bg);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    /* ── DOC LAYOUT ── */
+    .doc-header {
+      background: var(--dark);
+      color: var(--white);
+      padding: 64px 56px 56px;
+      border-bottom: 3px solid var(--gold);
+    }
+    .doc-kicker {
+      font-size: 10px; font-weight: 600; letter-spacing: 4px;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 18px;
+    }
+    .doc-header h1 {
+      font-family: var(--font-display); font-weight: 500;
+      font-size: clamp(34px, 5vw, 60px); line-height: 1.05; letter-spacing: -0.5px;
+    }
+    .doc-header h1 em { font-style: italic; color: var(--gold-light); }
+    .doc-header p {
+      margin-top: 18px; max-width: 620px; font-weight: 300;
+      color: rgba(255,255,255,0.6); font-size: 15px;
+    }
+
+    main { max-width: 1100px; margin: 0 auto; padding: 56px 32px 96px; }
+
+    section.block { margin-bottom: 64px; }
+    .section-eyebrow {
+      font-size: 10px; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--burgundy); margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: var(--font-display); font-size: 28px; font-weight: 600;
+      color: var(--text); margin-bottom: 6px;
+    }
+    .section-note { color: var(--muted); font-size: 13px; max-width: 720px; margin-bottom: 28px; }
+
+    .panel {
+      background: var(--panel); border: 1px solid var(--border);
+      border-radius: 4px; padding: 32px; box-shadow: 0 2px 20px rgba(0,0,0,0.03);
+    }
+
+    /* ── COLOR SWATCHES ── */
+    .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 14px; }
+    .swatch { border: 1px solid var(--border); border-radius: 4px; overflow: hidden; background: #fff; }
+    .swatch-chip { height: 92px; }
+    .swatch-meta { padding: 12px 14px; }
+    .swatch-name { font-size: 12px; font-weight: 600; color: var(--text); }
+    .swatch-hex { font-size: 11px; color: var(--muted); font-family: 'SF Mono', Menlo, monospace; margin-top: 2px; }
+    .swatch-role { font-size: 10px; color: var(--muted); margin-top: 6px; line-height: 1.4; }
+
+    /* ── TYPE SPECIMENS ── */
+    .type-row { padding: 20px 0; border-bottom: 1px solid var(--border); display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 24px; }
+    .type-row:last-child { border-bottom: none; }
+    .type-spec { font-size: 11px; color: var(--muted); font-family: 'SF Mono', Menlo, monospace; text-align: right; white-space: nowrap; }
+    .t-display-xl { font-family: var(--font-display); font-size: 56px; font-weight: 600; line-height: 1.02; letter-spacing: -0.5px; }
+    .t-display-l  { font-family: var(--font-display); font-size: 40px; font-weight: 600; line-height: 1.2; }
+    .t-display-m  { font-family: var(--font-display); font-size: 30px; font-weight: 600; line-height: 1.25; }
+    .t-display-italic { font-family: var(--font-display); font-size: 22px; font-style: italic; font-weight: 400; color: var(--burgundy); }
+    .t-subtitle { font-family: var(--font-subtitle); font-size: 19px; font-weight: 500; line-height: 1.5; }
+    .t-eyebrow { font-family: var(--font-ui); font-size: 11px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+    .t-body-lg { font-family: var(--font-text); font-size: 16px; font-weight: 300; line-height: 1.85; }
+    .t-body    { font-family: var(--font-text); font-size: 13px; font-weight: 300; line-height: 1.7; }
+    .t-caps    { font-family: var(--font-ui); font-size: 11px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+
+    .font-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 16px; margin-bottom: 28px; }
+    .font-card { background: var(--panel); border: 1px solid var(--border); border-radius: 4px; padding: 24px; }
+    .font-card .glyphs { font-size: 40px; line-height: 1.1; margin-bottom: 12px; }
+    .font-card.display .glyphs { font-family: var(--font-display); }
+    .font-card.subtitle .glyphs { font-family: var(--font-subtitle); font-weight: 500; }
+    .font-card.text .glyphs { font-family: var(--font-text); font-weight: 300; }
+    .font-card.ui .glyphs { font-family: var(--font-ui); font-weight: 500; }
+    .font-card h4 { font-size: 14px; margin-bottom: 4px; font-family: var(--font-ui); }
+    .font-card .meta { font-size: 11px; color: var(--muted); font-family: var(--font-ui); }
+
+    /* ── COMPONENT DEMOS ── */
+    .demo-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+    .demo-cell { background: var(--panel); border: 1px solid var(--border); border-radius: 4px; padding: 28px; display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
+    .demo-cell .label { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+    .demo-dark { background: var(--dark); }
+    .demo-dark .label { color: rgba(255,255,255,0.4); }
+
+    /* buttons (verbatim from site system) */
+    .btn-primary { display: inline-flex; align-items: center; gap: 10px; background: var(--dark-burgundy); color: var(--white); font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; padding: 16px 32px; border: none; cursor: pointer; transition: background .2s; }
+    .btn-primary:hover { background: var(--burgundy); color: var(--gold); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--gold); color: var(--gold); font-size: 11px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; padding: 15px 32px; cursor: pointer; transition: all .2s; background: transparent; }
+    .btn-outline:hover { background: var(--gold); color: var(--dark); }
+    .btn-white { display: inline-flex; align-items: center; gap: 10px; background: var(--white); color: var(--burgundy); font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; padding: 16px 32px; }
+    .nav-cta { font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--dark); background: var(--gold); padding: 10px 20px; text-decoration: none; }
+    .eyebrow-demo { font-size: 10px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
+
+    /* pill */
+    .pill { padding: 8px 20px; border: 1px solid rgba(201,169,110,0.5); font-size: 10.5px; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: #9a7a3a; }
+
+    /* card demos */
+    .service-card-demo { position: relative; width: 100%; aspect-ratio: 3/4; border-radius: 2px; overflow: hidden; background: linear-gradient(135deg, #4a2a18, #8b5530); }
+    .service-card-demo .ov { position: absolute; inset: 0; background: linear-gradient(to top, rgba(20,10,15,0.85) 0%, rgba(20,10,15,0.1) 60%, transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 22px 20px; }
+    .service-card-demo h5 { font-family: var(--font-display); font-size: 19px; font-weight: 400; color: #fff; }
+    .service-card-demo .arrow { margin-top: 12px; width: 28px; height: 28px; border: 1px solid rgba(201,169,110,0.6); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 12px; }
+
+    .review-card-demo { background: #fff; border-radius: 12px; padding: 18px 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); width: 100%; }
+    .review-card-demo .top { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .review-card-demo .ini { width: 40px; height: 40px; border-radius: 50%; background: #9c5c5c; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 600; }
+    .review-card-demo .nm { font-size: 13px; font-weight: 600; }
+    .review-card-demo .tm { font-size: 11px; color: #888; }
+    .review-card-demo .stars { color: #f5c518; font-size: 14px; margin-bottom: 8px; }
+    .review-card-demo p { font-size: 13px; line-height: 1.6; }
+
+    /* logo demos */
+    .logo-row { display: flex; flex-wrap: wrap; gap: 16px; }
+    .logo-tile { flex: 1; min-width: 280px; border: 1px solid var(--border); border-radius: 4px; padding: 36px; display: flex; align-items: center; justify-content: center; }
+    .logo-tile img { height: 40px; width: auto; }
+    .lt-light { background: #fff; }
+    .lt-dark { background: var(--dark); }
+    .lt-burgundy { background: var(--burgundy); }
+    .lt-cream { background: var(--cream); }
+
+    /* spacing scale */
+    .space-row { display: flex; align-items: center; gap: 16px; margin-bottom: 10px; }
+    .space-bar { background: var(--gold); height: 14px; border-radius: 2px; }
+    .space-label { font-size: 11px; color: var(--muted); font-family: 'SF Mono', Menlo, monospace; }
+
+    /* principles */
+    .principles { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px,1fr)); gap: 16px; }
+    .principle { background: var(--panel); border: 1px solid var(--border); border-left: 3px solid var(--burgundy); border-radius: 4px; padding: 22px; }
+    .principle h4 { font-family: var(--font-display); font-size: 17px; margin-bottom: 8px; }
+    .principle p { font-size: 12.5px; color: var(--muted); }
+
+    .voice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .voice-col { background: var(--panel); border: 1px solid var(--border); border-radius: 4px; padding: 24px; }
+    .voice-col h4 { font-size: 12px; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 14px; }
+    .voice-col.do h4 { color: #1a6b3c; }
+    .voice-col.dont h4 { color: var(--burgundy); }
+    .voice-col li { font-size: 13px; margin-bottom: 8px; list-style: none; padding-left: 20px; position: relative; line-height: 1.5; }
+    .voice-col.do li::before { content: '“'; position: absolute; left: 0; color: var(--gold); font-size: 18px; font-family: var(--font-display); top: 2px; }
+    .voice-col.dont li::before { content: '×'; position: absolute; left: 2px; color: var(--burgundy); font-weight: 700; }
+
+    .footer-note { text-align: center; color: var(--muted); font-size: 12px; padding: 40px 0 0; border-top: 1px solid var(--border); margin-top: 40px; }
+
+    @media (max-width: 720px) {
+      .doc-header { padding: 48px 24px 40px; }
+      main { padding: 40px 20px 64px; }
+      .font-cards, .voice-grid { grid-template-columns: 1fr; }
+      .type-row { grid-template-columns: 1fr; }
+      .type-spec { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="doc-header">
+  <div class="doc-kicker">Brand &amp; Design System</div>
+  <h1>Alteris Financial Group<br><em>Prosperity, for life.</em></h1>
+  <p>The captured brand foundation — colours, typography, components and voice — extracted from alteris.com.au and the Alteris brand mark. This is the source of truth to keep the brand intact across any redesign.</p>
+</header>
+
+<main>
+
+  <!-- ── LOGO ── -->
+  <section class="block">
+    <div class="section-eyebrow">01 — Identity</div>
+    <h2 class="section-title">Logo &amp; mark</h2>
+    <p class="section-note">The Alteris wordmark is set in a refined high-contrast serif with a signature gold-to-bronze metallic gradient (<code>#c8b06e → #997847</code>). It is the brand's anchor — always give it room to breathe and never recolour it outside the approved gold, white (on dark) or single-colour treatments.</p>
+    <div class="logo-row">
+      <div class="logo-tile lt-light"><img src="images/alteris-logo.svg" alt="Alteris logo on light" /></div>
+      <div class="logo-tile lt-dark"><img src="images/alteris-logo.svg" alt="Alteris logo on dark" /></div>
+      <div class="logo-tile lt-burgundy"><img src="images/alteris-logo.svg" alt="Alteris logo on burgundy" /></div>
+      <div class="logo-tile lt-cream"><img src="images/alteris-logo.svg" alt="Alteris logo on cream" /></div>
+    </div>
+  </section>
+
+  <!-- ── COLOUR ── -->
+  <section class="block">
+    <div class="section-eyebrow">02 — Colour</div>
+    <h2 class="section-title">Palette</h2>
+    <p class="section-note">A warm, considered palette: metallic gold for prestige, deep burgundy for warmth and trust, near-black for cinematic depth, and cream/warm-white grounds that keep the brand feeling human rather than clinical. Gold and burgundy are the two carriers of brand recognition.</p>
+    <div class="swatch-grid">
+      <div class="swatch"><div class="swatch-chip" style="background:#c9a96e"></div><div class="swatch-meta"><div class="swatch-name">Gold</div><div class="swatch-hex">#c9a96e</div><div class="swatch-role">Primary accent — eyebrows, lines, hover states, prestige.</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#dfc08a"></div><div class="swatch-meta"><div class="swatch-name">Gold Light</div><div class="swatch-hex">#dfc08a</div><div class="swatch-role">Highlights, emphasis on dark grounds.</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:linear-gradient(135deg,#c8b06e,#997847)"></div><div class="swatch-meta"><div class="swatch-name">Logo Gradient</div><div class="swatch-hex">#c8b06e → #997847</div><div class="swatch-role">Reserved for the mark &amp; metallic moments.</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#7a1f3d"></div><div class="swatch-meta"><div class="swatch-name">Burgundy</div><div class="swatch-hex">#7a1f3d</div><div class="swatch-role">Secondary brand — statement bands, buttons, links.</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#5c1530"></div><div class="swatch-meta"><div class="swatch-name">Dark Burgundy</div><div class="swatch-hex">#5c1530</div><div class="swatch-role">Primary button base, depth.</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#141014"></div><div class="swatch-meta"><div class="swatch-name">Dark</div><div class="swatch-hex">#141014</div><div class="swatch-role">Hero, footer, cinematic sections.</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#2c2c2c"></div><div class="swatch-meta"><div class="swatch-name">Charcoal / Text</div><div class="swatch-hex">#2c2c2c</div><div class="swatch-role">Body copy default.</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#6b6b6b"></div><div class="swatch-meta"><div class="swatch-name">Muted</div><div class="swatch-hex">#6b6b6b</div><div class="swatch-role">Secondary text, captions.</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#f5f0e8;border-bottom:1px solid #e4ddd0"></div><div class="swatch-meta"><div class="swatch-name">Cream</div><div class="swatch-hex">#f5f0e8</div><div class="swatch-role">Warm content grounds.</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#faf8f4;border-bottom:1px solid #ece7df"></div><div class="swatch-meta"><div class="swatch-name">Warm White</div><div class="swatch-hex">#faf8f4</div><div class="swatch-role">Soft alternate to pure white.</div></div></div>
+      <div class="swatch"><div class="swatch-chip" style="background:#ffffff;border-bottom:1px solid #eee"></div><div class="swatch-meta"><div class="swatch-name">White</div><div class="swatch-hex">#ffffff</div><div class="swatch-role">Cards, clean sections.</div></div></div>
+    </div>
+  </section>
+
+  <!-- ── TYPE ── -->
+  <section class="block">
+    <div class="section-eyebrow">03 — Typography</div>
+    <h2 class="section-title">Type system</h2>
+    <p class="section-note">A four-role type system. <strong>DM Serif Display</strong> sets all titles; <strong>Sofia Pro Medium</strong> carries subtitles; <strong>Sofia Pro Light</strong> is the body text; and <strong>Poppins</strong> handles the header and footer (nav, labels, legal). Eyebrows and CTAs are always uppercase with generous letter-spacing. <em>Sofia Pro is a licensed Adobe Fonts family — load it via your Adobe web kit; this guide falls back to a geometric sans where it isn't installed.</em></p>
+    <div class="font-cards">
+      <div class="font-card display">
+        <div class="glyphs">Aa</div>
+        <h4>DM Serif Display</h4>
+        <div class="meta">Titles &amp; headlines — regular + italic accent.</div>
+      </div>
+      <div class="font-card subtitle">
+        <div class="glyphs">Aa</div>
+        <h4>Sofia Pro Medium</h4>
+        <div class="meta">Subtitles &amp; intros — weight 500.</div>
+      </div>
+      <div class="font-card text">
+        <div class="glyphs">Aa</div>
+        <h4>Sofia Pro Light</h4>
+        <div class="meta">Body copy — weight 300.</div>
+      </div>
+      <div class="font-card ui">
+        <div class="glyphs">Aa</div>
+        <h4>Poppins</h4>
+        <div class="meta">Header &amp; footer — nav, labels, legal. Weights 400–600.</div>
+      </div>
+    </div>
+    <div class="panel">
+      <div class="type-row"><div class="t-display-xl">Prosperity, for life.</div><div class="type-spec">DM Serif Display · 56–92px · title</div></div>
+      <div class="type-row"><div class="t-display-l">One family. Every chapter.</div><div class="type-spec">DM Serif Display · 40px · title</div></div>
+      <div class="type-row"><div class="t-display-m">Grow your wealth. Preserve your legacy.</div><div class="type-spec">DM Serif Display · 30px · title</div></div>
+      <div class="type-row"><div class="t-display-italic">For the generation building it.</div><div class="type-spec">DM Serif Display · 22px · italic</div></div>
+      <div class="type-row"><div class="t-subtitle">For the generation building it. For the generation inheriting it.</div><div class="type-spec">Sofia Pro · 19px · Medium 500</div></div>
+      <div class="type-row"><div class="t-body-lg">We guide you through every financial opportunity and challenge, from building wealth to stepping into retirement with confidence.</div><div class="type-spec">Sofia Pro · 16px · Light 300 · 1.85</div></div>
+      <div class="type-row"><div class="t-body">Investment advice, superannuation, insurance and retirement planning designed to grow and protect your assets.</div><div class="type-spec">Sofia Pro · 13px · Light 300</div></div>
+      <div class="type-row"><div class="t-eyebrow">What We Do</div><div class="type-spec">Poppins · 11px · 600 · +3px</div></div>
+      <div class="type-row"><div class="t-caps">Wealth · Accounting · Lifestyle · Care</div><div class="type-spec">Poppins · 11px · 500 · +2px · caps</div></div>
+    </div>
+  </section>
+
+  <!-- ── BUTTONS & ELEMENTS ── -->
+  <section class="block">
+    <div class="section-eyebrow">04 — Components</div>
+    <h2 class="section-title">Buttons &amp; UI elements</h2>
+    <p class="section-note">Buttons are square (no radius), uppercase, letter-spaced. The primary action is dark-burgundy filling to burgundy+gold on hover; gold pill CTAs and outlined-gold buttons handle secondary actions on dark grounds.</p>
+    <div class="demo-grid">
+      <div class="demo-cell"><span class="label">Primary</span><a class="btn-primary">Book an Appointment</a></div>
+      <div class="demo-cell demo-dark"><span class="label">Outline (on dark)</span><a class="btn-outline">Our Services</a></div>
+      <div class="demo-cell demo-dark"><span class="label">White (on dark)</span><a class="btn-white">Book a Consultation</a></div>
+      <div class="demo-cell demo-dark"><span class="label">Nav CTA pill</span><a class="nav-cta">Contact</a></div>
+      <div class="demo-cell demo-dark"><span class="label">Eyebrow label</span><span class="eyebrow-demo">— What We Do</span></div>
+      <div class="demo-cell demo-dark"><span class="label">Service pill</span><span class="pill">Wealth</span></div>
+    </div>
+  </section>
+
+  <!-- ── CARDS ── -->
+  <section class="block">
+    <div class="section-eyebrow">05 — Components</div>
+    <h2 class="section-title">Cards &amp; surfaces</h2>
+    <p class="section-note">Two signature card types: full-bleed image <strong>service cards</strong> with a dark gradient scrim and gold arrow affordance, and rounded white <strong>Google review cards</strong> used in the social-proof carousel.</p>
+    <div class="demo-grid">
+      <div class="demo-cell"><span class="label">Service card</span>
+        <div class="service-card-demo"><div class="ov"><h5>Wealth Management</h5><div class="arrow">→</div></div></div>
+      </div>
+      <div class="demo-cell" style="grid-column: span 2;"><span class="label">Review card</span>
+        <div class="review-card-demo">
+          <div class="top"><div class="ini">C</div><div><div class="nm">Caroline Petterson</div><div class="tm">1 month ago</div></div></div>
+          <div class="stars">★★★★★</div>
+          <p>A very seamless and pleasant journey into retirement. Thank you Gary Gleeson.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SPACING ── -->
+  <section class="block">
+    <div class="section-eyebrow">06 — Layout</div>
+    <h2 class="section-title">Spacing &amp; rhythm</h2>
+    <p class="section-note">Generous, editorial whitespace. Sections breathe at <code>100–120px</code> vertical padding on desktop; horizontal gutters sit at <code>64px</code>, tightening to <code>40px</code> (tablet) and <code>24px</code> (mobile). Layout is a 4-column services grid and 50/50 feature rows.</p>
+    <div class="panel">
+      <div class="space-row"><div class="space-bar" style="width:8px"></div><span class="space-label">8px — inline gaps</span></div>
+      <div class="space-row"><div class="space-bar" style="width:16px"></div><span class="space-label">16px — element spacing</span></div>
+      <div class="space-row"><div class="space-bar" style="width:24px"></div><span class="space-label">24px — mobile gutter</span></div>
+      <div class="space-row"><div class="space-bar" style="width:40px"></div><span class="space-label">40px — tablet gutter</span></div>
+      <div class="space-row"><div class="space-bar" style="width:64px"></div><span class="space-label">64px — desktop gutter</span></div>
+      <div class="space-row"><div class="space-bar" style="width:100px"></div><span class="space-label">100–120px — section padding (vertical)</span></div>
+    </div>
+  </section>
+
+  <!-- ── PRINCIPLES ── -->
+  <section class="block">
+    <div class="section-eyebrow">07 — Principles</div>
+    <h2 class="section-title">Design principles</h2>
+    <div class="principles">
+      <div class="principle"><h4>Warm prestige</h4><p>Gold + burgundy + cream signal premium advice without feeling cold or corporate. Avoid clinical blues and greys.</p></div>
+      <div class="principle"><h4>Editorial calm</h4><p>Serif headlines, lots of air, restrained motion. The page should feel like a considered publication, not a sales funnel.</p></div>
+      <div class="principle"><h4>Generational story</h4><p>Imagery and copy always span generations — building, inheriting, caring. People, not products.</p></div>
+      <div class="principle"><h4>Earned trust</h4><p>Real Google reviews, real offices, real names. Social proof is a first-class brand element.</p></div>
+    </div>
+  </section>
+
+  <!-- ── VOICE ── -->
+  <section class="block">
+    <div class="section-eyebrow">08 — Voice &amp; tone</div>
+    <h2 class="section-title">How Alteris speaks</h2>
+    <div class="voice-grid">
+      <div class="voice-col do">
+        <h4>Do</h4>
+        <ul>
+          <li>Prosperity, for life.</li>
+          <li>One family. Every chapter.</li>
+          <li>Grow your wealth. Preserve your legacy.</li>
+          <li>For the generation building it. For the generation inheriting it.</li>
+        </ul>
+      </div>
+      <div class="voice-col dont">
+        <h4>Avoid</h4>
+        <ul>
+          <li>Jargon-heavy product names without human framing</li>
+          <li>Aggressive, urgency-driven sales language</li>
+          <li>Cold corporate "solutions" / "leverage" speak</li>
+          <li>Over-promising returns or guarantees</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <p class="footer-note">Alteris Financial Group — Brand &amp; Design System · captured June 2026 · Sydney · Melbourne · Brisbane · Rockhampton · Gladstone</p>
+
+</main>
+</body>
+</html>
