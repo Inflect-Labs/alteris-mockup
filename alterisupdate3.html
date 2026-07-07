@@ -290,22 +290,54 @@ window.ALTERIS_IMAGES={"life_plan":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAS
     --ae-cream:#f5e8e0;
     --ae-slate:#43525a;
   }
-  /* #11 service cards: flat + wide, horizontal scroller with blog-style arrows */
-  [data-svc-spread]{perspective:none !important;justify-content:flex-start !important;
-    overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;
-    padding:16px 0 24px !important;}
-  [data-svc-spread]::-webkit-scrollbar{display:none;}
-  [data-svc-card]{transform:none !important;flex:0 0 clamp(320px,26vw,400px) !important;
-    scroll-snap-align:start;min-height:0 !important;}
-  @media (max-width:820px){ [data-svc-card]{flex-basis:78vw !important;} }
-  /* #12 service cards: Syrah panels on the gold section, cream text for contrast */
-  [data-svc-card]{border-color:rgba(89,33,48,.35) !important;
-    background:linear-gradient(168deg,#592130,#400a18) !important;
-    box-shadow:0 20px 46px -30px rgba(43,6,16,.45) !important;}
-  [data-screen-label="Services"] [data-svc-card] h3{color:#f5e8e0 !important;}
-  [data-screen-label="Services"] [data-svc-card] p{color:rgba(245,232,224,.88) !important;}
-  [data-svc-card] .ae-ico{border-color:rgba(200,176,110,.6) !important;background:rgba(200,176,110,.12) !important;}
-  [data-svc-card] .ae-ico svg{color:#c8b06e !important;}
+  /* Services — burgundy carousel cards, matched to the insights/blog rhythm */
+  [data-screen-label="Services"] [data-svc-spread]{perspective:none !important;
+    display:flex !important;flex-direction:row !important;justify-content:flex-start !important;
+    flex-wrap:nowrap !important;gap:clamp(16px,1.6vw,24px) !important;
+    overflow-x:auto !important;overflow-y:visible !important;scroll-snap-type:x mandatory;
+    scrollbar-width:none;-ms-overflow-style:none;padding:0 0 8px !important;}
+  [data-screen-label="Services"] [data-svc-spread]::-webkit-scrollbar{display:none;}
+  [data-screen-label="Services"] [data-svc-card]{
+    transform:none !important;flex:0 0 clamp(280px,26vw,360px) !important;width:auto !important;
+    min-width:0 !important;min-height:clamp(340px,34vw,438px) !important;
+    scroll-snap-align:start;display:flex !important;flex-direction:column !important;
+    align-items:flex-start !important;justify-content:flex-start !important;position:relative;
+    padding:clamp(34px,3.1vw,44px) clamp(28px,3vw,44px) !important;
+    background:linear-gradient(180deg,#632033 0%,#4c0715 100%) !important;
+    border:none !important;box-shadow:0 32px 46px -34px rgba(43,6,16,.55) !important;
+    overflow:hidden;transition:transform .25s ease,box-shadow .25s ease;}
+  [data-screen-label="Services"] [data-svc-card]:hover{transform:translateY(-3px) !important;
+    box-shadow:0 38px 58px -34px rgba(43,6,16,.68) !important;}
+  [data-screen-label="Services"] [data-svc-card]::before,
+  [data-screen-label="Services"] [data-svc-card]::after{content:none !important;}
+  [data-screen-label="Services"] [data-svc-card] .ae-ico{width:clamp(74px,5.4vw,100px) !important;height:clamp(74px,5.4vw,100px) !important;
+    border-radius:0 !important;border:1px solid rgba(200,176,110,.62) !important;
+    background:rgba(200,176,110,.08) !important;margin-bottom:clamp(32px,3.5vw,46px) !important;
+    display:flex !important;align-items:center !important;justify-content:center !important;flex:0 0 auto !important;}
+  [data-screen-label="Services"] [data-svc-card] .ae-ico svg{width:34px !important;height:34px !important;color:#c8b06e !important;stroke:#c8b06e !important;}
+  [data-screen-label="Services"] [data-svc-card] .ae-ico svg path[fill]{fill:#c8b06e !important;}
+  [data-screen-label="Services"] [data-svc-card] .ae-ico svg path[stroke]{stroke:#c8b06e !important;}
+  [data-screen-label="Services"] [data-svc-card] h3{color:#fff8ee !important;
+    font-size:clamp(34px,3.2vw,48px) !important;line-height:1.02 !important;
+    margin:0 0 clamp(18px,2vw,24px) !important;}
+  [data-screen-label="Services"] [data-svc-card] p{color:rgba(245,232,224,.72) !important;
+    font-size:clamp(16px,1.3vw,21px) !important;line-height:1.52 !important;
+    max-width:28ch;margin:0 0 clamp(24px,2.7vw,36px) !important;}
+  [data-screen-label="Services"] [data-svc-card] a{color:#c8b06e !important;
+    border-bottom:1px solid rgba(200,176,110,.72) !important;text-decoration:none !important;
+    font-size:clamp(15px,1.1vw,18px) !important;letter-spacing:.03em !important;padding-bottom:3px !important;}
+  [data-screen-label="Services"] [data-svc-card] > div > span{display:none !important;}
+  .ae-svc-wrap{position:relative;}
+  .ae-svc-nav{position:absolute;top:clamp(-116px,-8vw,-86px);transform:none;z-index:6;
+    border:1px solid rgba(89,33,48,.32) !important;background:rgba(227,215,182,.86) !important;
+    box-shadow:0 12px 22px -14px rgba(43,6,16,.55);}
+  .ae-svc-nav:hover{background:#f2e8c9 !important;}
+  .ae-svc-prev{left:auto;right:58px;} .ae-svc-next{right:0;}
+  @media (max-width:820px){
+    [data-screen-label="Services"] [data-svc-card]{flex:0 0 78vw !important;min-height:360px !important;}
+    .ae-svc-nav{top:-74px;}
+    .ae-svc-prev{right:56px;} .ae-svc-next{right:0;}
+  }
   /* #6/#20 contact: single centered column */
   [data-contact-grid].ae-centered{grid-template-columns:1fr !important;max-width:640px;
     margin-left:auto !important;margin-right:auto !important;text-align:left;}
@@ -318,19 +350,31 @@ window.ALTERIS_IMAGES={"life_plan":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAS
   .ae-carbtn:focus-visible{outline:2px solid #592130;outline-offset:3px;}
   .ae-carbtn svg{width:18px;height:18px;}
   .ae-controls{display:flex;gap:12px;align-items:center;}
-  /* testimonial cards — white cards on the gold band, scrollable like the blog */
-  [data-screen-label="Testimonials"] [data-help-cards]{display:flex !important;
-    grid-template-columns:none !important;gap:clamp(16px,1.6vw,24px) !important;
-    border:none !important;overflow-x:auto;scroll-snap-type:x mandatory;
-    padding-bottom:8px;scrollbar-width:none;-ms-overflow-style:none;}
-  [data-screen-label="Testimonials"] [data-help-cards]::-webkit-scrollbar{display:none;}
-  .ae-testi-card{flex:0 0 clamp(300px,26vw,380px) !important;scroll-snap-align:start;
-    background:#fff !important;border:1px solid rgba(89,33,48,.14) !important;
-    padding:clamp(28px,2.6vw,42px) !important;}
-  .ae-testi-card > div:first-child{color:#997847 !important;}   /* stars -> Chardonnay */
-  .ae-testi-card > div:last-child{color:#43525a !important;}    /* attribution -> Gris */
-  [data-screen-label="Testimonials"] .ae-testi-card p{color:#592130 !important;}
-  @media (max-width:820px){ .ae-testi-card{flex-basis:78vw !important;} }
+  /* testimonial spotlight — one large pull-quote, framed in its own card */
+  .ae-spot{max-width:820px;margin:0 auto;text-align:center;position:relative;
+    background:#fff;border:1px solid rgba(89,33,48,.14);
+    padding:clamp(44px,5vw,68px) clamp(28px,5.5vw,72px);
+    box-shadow:0 34px 64px -36px rgba(43,6,16,.28);}
+  .ae-spot::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,var(--ae-wine),var(--ae-gold-dark),var(--ae-gold));}
+  .ae-spot-body{transition:opacity .25s ease;}
+  .ae-spot-stars{color:#997847 !important;font-size:15px;letter-spacing:6px;
+    margin-bottom:clamp(18px,2vw,26px);}
+  [data-screen-label="Testimonials"] .ae-spot-quote{
+    font-family:'Jost',sans-serif;font-weight:300;
+    font-size:clamp(20px,1.9vw,27px);line-height:1.56;letter-spacing:.003em;
+    color:#592130 !important;
+    margin:0 0 clamp(22px,2.4vw,32px);min-height:4.7em;
+    display:flex;align-items:center;justify-content:center;}
+  .ae-spot-name{font-weight:600;font-size:15px;color:#592130 !important;}
+  .ae-spot-meta{font-size:13px;color:#43525a !important;margin-top:5px;}
+  .ae-spot-dots{display:flex;justify-content:center;gap:10px;margin-top:clamp(24px,2.6vw,34px);}
+  .ae-spot-dot{width:9px;height:9px;border-radius:50%;border:none;padding:0;cursor:pointer;
+    background:rgba(153,120,71,.4);transition:background .2s,transform .2s;}
+  .ae-spot-dot:hover{background:#997847;}
+  .ae-spot-dot[aria-current="true"]{background:#592130;transform:scale(1.25);}
+  .ae-spot-dot:focus-visible{outline:2px solid #592130;outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){ .ae-spot-body{transition:none;} }
   /* insights cards */
   .ae-blog-card{flex:0 0 clamp(280px,26vw,360px);scroll-snap-align:start;
     background:#fff;border:1px solid rgba(89,33,48,.12);
@@ -351,7 +395,7 @@ window.ALTERIS_IMAGES={"life_plan":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAS
   .ae-btn-gold:hover{transform:translateY(-2px);box-shadow:0 16px 30px -14px rgba(43,6,16,.6);}
   .ae-btn-gold:focus-visible{outline:2px solid #592130;outline-offset:3px;}
   [data-comment-anchor="8cb5c1ef55-a"]{text-decoration:none !important;}
-  @media (prefers-reduced-motion: reduce){ *{scroll-behavior:auto !important;} .ae-carbtn{transition:none !important;} }
+  @media (prefers-reduced-motion: reduce){ *{scroll-behavior:auto !important;} .ae-carbtn,[data-svc-card]{transition:none !important;} }
   @media (max-width:820px){ .ae-blog-card{flex-basis:78vw;} }
   /* ---- Navbar ---- */
   [data-screen-label="Navbar"]{background:#fff !important;border-bottom:1px solid rgba(89,33,48,.12) !important;}
@@ -535,6 +579,43 @@ window.ALTERIS_IMAGES={"life_plan":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAS
       var stepPx = card ? card.getBoundingClientRect().width + gap : sc.clientWidth * 0.6;
       sc.scrollBy({ left: (b.getAttribute("data-ae-dir") === "left" ? -1 : 1) * stepPx, behavior: REDUCE ? "auto" : "smooth" });
     });
+    /* testimonial spotlight: prev/next arrows + dots (re-queries live nodes,
+       state lives in attributes so it survives the rehydrate pass) */
+    document.addEventListener("click", function (e) {
+      var nav = e.target.closest && e.target.closest("[data-ae-spot-nav],[data-ae-spot-dot]");
+      if (!nav) return;
+      var spot = document.querySelector(".ae-spot");
+      if (!spot) return;
+      var quotes;
+      try { quotes = JSON.parse(spot.getAttribute("data-ae-quotes") || "[]"); } catch (err) { return; }
+      if (!quotes.length) return;
+      var idx = parseInt(spot.getAttribute("data-idx") || "0", 10) || 0;
+      if (nav.hasAttribute("data-ae-spot-dot")) {
+        idx = parseInt(nav.getAttribute("data-ae-spot-dot"), 10) || 0;
+      } else {
+        idx = (idx + (nav.getAttribute("data-ae-spot-nav") === "prev" ? -1 : 1) + quotes.length) % quotes.length;
+      }
+      spot.setAttribute("data-idx", String(idx));
+      var body = spot.querySelector(".ae-spot-body");
+      function paint() {
+        var t = quotes[idx];
+        var qEl = spot.querySelector(".ae-spot-quote");
+        var nEl = spot.querySelector(".ae-spot-name");
+        var mEl = spot.querySelector(".ae-spot-meta");
+        if (qEl) qEl.textContent = t.q;
+        if (nEl) nEl.textContent = t.n;
+        if (mEl) mEl.textContent = t.m;
+        spot.querySelectorAll(".ae-spot-dot").forEach(function (d, i) {
+          if (i === idx) d.setAttribute("aria-current", "true");
+          else d.removeAttribute("aria-current");
+        });
+      }
+      if (REDUCE || !body) { paint(); }
+      else {
+        body.style.opacity = "0";
+        setTimeout(function () { paint(); body.style.opacity = "1"; }, 250);
+      }
+    });
   }
 
   /* ---------- the changes ---------- */
@@ -655,12 +736,16 @@ window.ALTERIS_IMAGES={"life_plan":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAS
       });
     } catch (e) { console.warn("[ae] #10", e); }
 
-    /* #11 flatten fan (zero the vars) + #12 tag icon boxes for contrast */
+    /* Services: restore burgundy carousel cards with section-level controls */
     try {
       var spread = document.querySelector("[data-svc-spread]");
       if (spread) {
         spread.style.setProperty("perspective", "none");
-        spread.setAttribute("data-ae-scroll", "services");
+        spread.style.setProperty("display", "flex", "important");
+        spread.style.setProperty("flex-direction", "row", "important");
+        spread.style.setProperty("flex-wrap", "nowrap", "important");
+        spread.style.setProperty("justify-content", "flex-start", "important");
+        spread.style.setProperty("overflow-x", "auto", "important");
       }
       document.querySelectorAll("[data-svc-card]").forEach(function (card) {
         card.style.setProperty("--ry", "0deg");
@@ -670,26 +755,30 @@ window.ALTERIS_IMAGES={"life_plan":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAS
         if (svg) { var box = svg.closest("div"); if (box && box !== card) box.classList.add("ae-ico"); }
         else { var ico = card.querySelector("div"); if (ico) ico.classList.add("ae-ico"); }
       });
-      /* blog-style arrows in the services header; "View all services" moves
-         below the carousel, centered */
+      if (spread && !spread.getAttribute("data-ae-slider")) {
+        spread.setAttribute("data-ae-slider", "1");
+        spread.setAttribute("data-ae-scroll", "services");
+        var svcWrap = h("div", { "class": "ae-svc-wrap" });
+        spread.parentNode.insertBefore(svcWrap, spread);
+        svcWrap.appendChild(spread);
+        svcWrap.appendChild(carBtn("left", "#592130", "Previous services", "services", "ae-svc-nav ae-svc-prev"));
+        svcWrap.appendChild(carBtn("right", "#592130", "Next services", "services", "ae-svc-nav ae-svc-next"));
+      }
+      /* "View all services" moves below the list, centered */
       var svcSec = document.querySelector('[data-screen-label="Services"]');
       var svcH2 = svcSec && svcSec.querySelector("h2");
       var svcHeader = svcH2 && svcH2.parentElement && svcH2.parentElement.parentElement;
-      if (svcHeader && !svcHeader.querySelector(".ae-controls")) {
+      if (svcHeader) {
         var svcLink = svcHeader.querySelector("a");
-        if (svcLink && spread && spread.parentElement) {
+        if (svcLink && spread && spread.parentElement && !svcSec.querySelector(".ae-svc-view-all")) {
           svcLink.removeAttribute("style");
           svcLink.removeAttribute("style-hover");
-          svcLink.className = "ae-view-all";
-          var svcLinkWrap = h("div", { style: "display:flex;justify-content:center;margin-top:clamp(28px,3vw,44px)" }, [svcLink]);
-          spread.parentElement.insertBefore(svcLinkWrap, spread.nextSibling);
+          svcLink.className = "ae-view-all ae-svc-view-all";
+          var svcLinkWrap = h("div", { style: "display:flex;justify-content:center;margin-top:clamp(34px,3.6vw,56px)" }, [svcLink]);
+          spread.parentElement.parentElement.insertBefore(svcLinkWrap, spread.parentElement.nextSibling);
         }
-        svcHeader.appendChild(h("div", { "class": "ae-controls" }, [
-          carBtn("left", "#592130", "Previous services", "services"),
-          carBtn("right", "#592130", "Next services", "services")
-        ]));
       }
-    } catch (e) { console.warn("[ae] #11/#12", e); }
+    } catch (e) { console.warn("[ae] services-carousel", e); }
 
     /* #13 — life-stage: keep ONE static image (no swap, not clickable);
        only darken the description text for readability. */
@@ -715,36 +804,53 @@ window.ALTERIS_IMAGES={"life_plan":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAS
       }
     } catch (e) { console.warn("[ae] #5", e); }
 
-    /* testimonials: white cards, extra quotes so it scrolls, blog-style arrows */
+    /* testimonials: spotlight pull-quote — arrows/dots crossfade through quotes */
     try {
       var tsec2 = document.querySelector('[data-screen-label="Testimonials"]');
       var tgrid = tsec2 && tsec2.querySelector("[data-help-cards]");
-      if (tgrid && !tgrid.hasAttribute("data-ae-scroll")) {
-        tgrid.setAttribute("data-ae-scroll", "testimonials");
-        [].slice.call(tgrid.children).forEach(function (c) { c.classList.add("ae-testi-card"); });
-        var extraQuotes = [
+      if (tgrid && !tsec2.querySelector(".ae-spot")) {
+        /* harvest the three template quotes so the template stays the source of truth */
+        var quotes = [].slice.call(tgrid.children).map(function (c) {
+          var q = c.querySelector("p");
+          var divs = c.querySelectorAll("div");
+          return {
+            q: q ? q.textContent.trim() : "",
+            n: divs[1] ? divs[1].textContent.trim() : "",
+            m: divs[2] ? divs[2].textContent.trim() : ""
+          };
+        }).filter(function (t) { return t.q; });
+        quotes = quotes.concat([
           { q: "“Alteris restructured our super and tax position two years before retirement. We are better off every single year because of it.”", n: "David & Meredith K.", m: "Retired · Gold Coast" },
           { q: "“Every recommendation comes with a clear explanation of why. They treat our goals as if they were their own.”", n: "Priya S.", m: "Company director · Melbourne" },
           { q: "“From the first meeting they understood what mattered — security for us, and a real head start for our kids.”", n: "James & Olivia R.", m: "Young family · Brisbane" }
-        ];
-        extraQuotes.forEach(function (t) {
-          tgrid.appendChild(h("div", { "class": "ae-testi-card", style: "display:flex;flex-direction:column" }, [
-            h("div", { style: "font-size:13px;letter-spacing:2px;margin-bottom:22px", text: "★★★★★" }),
-            h("p", { style: "font-family:'Cormorant Garamond',serif;font-size:clamp(19px,1.55vw,23px);line-height:1.42;color:#592130;margin-bottom:28px;flex:1", text: t.q }),
-            h("div", { style: "font-weight:600;font-size:14px;color:#592130", text: t.n }),
-            h("div", { style: "font-size:12.5px;margin-top:4px", text: t.m })
-          ]));
-        });
+        ]);
+        var spot = h("div", { "class": "ae-spot", "data-idx": "0", "data-ae-quotes": JSON.stringify(quotes) }, [
+          h("div", { "class": "ae-spot-body" }, [
+            h("div", { "class": "ae-spot-stars", text: "★★★★★" }),
+            h("p", { "class": "ae-spot-quote", text: quotes[0].q }),
+            h("div", { "class": "ae-spot-name", text: quotes[0].n }),
+            h("div", { "class": "ae-spot-meta", text: quotes[0].m })
+          ]),
+          h("div", { "class": "ae-spot-dots" }, quotes.map(function (t, i) {
+            var dot = h("button", { "class": "ae-spot-dot", type: "button",
+              "data-ae-spot-dot": String(i), "aria-label": "Show testimonial " + (i + 1) });
+            if (i === 0) dot.setAttribute("aria-current", "true");
+            return dot;
+          }))
+        ]);
+        tgrid.parentNode.replaceChild(spot, tgrid);
         var tH2 = tsec2.querySelector("h2");
         var tHeader = tH2 && tH2.parentElement && tH2.parentElement.parentElement;
         if (tHeader && !tHeader.querySelector(".ae-controls")) {
           tHeader.appendChild(h("div", { "class": "ae-controls" }, [
-            carBtn("left", "#592130", "Previous testimonials", "testimonials"),
-            carBtn("right", "#592130", "Next testimonials", "testimonials")
+            h("button", { "class": "ae-carbtn", type: "button", "aria-label": "Previous testimonial",
+              "data-ae-spot-nav": "prev", style: "border:1px solid rgba(43,6,16,.35)" }, [arrow("left", "#592130")]),
+            h("button", { "class": "ae-carbtn", type: "button", "aria-label": "Next testimonial",
+              "data-ae-spot-nav": "next", style: "border:1px solid rgba(43,6,16,.35)" }, [arrow("right", "#592130")])
           ]));
         }
       }
-    } catch (e) { console.warn("[ae] testi-carousel", e); }
+    } catch (e) { console.warn("[ae] testi-spotlight", e); }
 
     /* #6 #20 — contact: drop the "Call our team" column, center the enquiry form */
     try {
