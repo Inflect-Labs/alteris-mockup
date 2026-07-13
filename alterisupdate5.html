@@ -613,6 +613,9 @@ window.ALTERIS_IMAGES={"life_plan":"data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAS
     color:var(--ae-wine) !important;font-weight:600 !important;border:none !important;}
   [data-screen-label="Contact"] div[style*="border-bottom"]{
     border-bottom-color:rgba(240,186,171,.28) !important;}
+  /* page shell: the bundler leaves a maroon body background that bleeds out
+     below the footer at the end of the scroll — match the footer instead */
+  html,body{background:#141414 !important;}
   /* Footer: Gris body, darker Gris bottom copyright banner */
   footer{background:#222222 !important;}
   footer p{color:rgba(245,232,224,.78) !important;}
